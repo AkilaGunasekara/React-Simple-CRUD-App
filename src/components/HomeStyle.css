@@ -1,0 +1,29 @@
+.article-header{
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #76cfeb;
+    box-shadow: 0 0 10px #ccc;
+    transition: all 0.3s ease-in-out;
+    align-items: center;
+    text-align: center;
+}
+
+.article-header:hover{
+    background-color: #fff;
+    box-shadow: 0 0 10px #ccc;
+    transition: all 0.3s ease-in-out;
+}
+
+.article-header h1{
+    font-size: 30px;
+    font-weight: 700;
+    color: #013c63;
+}
+ 
+.section-content{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 15px;
+}
