@@ -2,6 +2,9 @@ import { type } from "os";
 import "./EmployeeListStyle.css";
 import { IEmployee } from "./Employee";
 
+import { useState } from "react";
+import EmployeeModal from "./EmployeeModal";
+
 
 type Props = {
     list: IEmployee[]
@@ -15,6 +18,20 @@ const EmployeeList = (props : Props) => {
     const onDeleteClickHnd = (data: IEmployee) => {
         onDelete(data);
     };
+
+    const [showModal, setShowModal] = useState(false); 
+
+    const [dataToShow, setDataToShow] = useState<IEmployee | null>(null);
+
+    const onView = (data: IEmployee) => {
+        setShowModal(true);
+        setDataToShow(data);
+    };
+
+    const onCloseModal = () => {
+        setShowModal(false);
+    };
+
 
 
     return (
@@ -38,7 +55,7 @@ const EmployeeList = (props : Props) => {
                 <td>{employee.email}</td>
                 <td>{employee.mobile}</td>
                 <td>
-                    <button>View</button>
+                    <button onClick={() => onView(employee)}>View</button>
                     <button>Edit</button>   
                     <button onClick={() => onDelete(employee)}>Delete</button>
                 </td>
@@ -47,7 +64,9 @@ const EmployeeList = (props : Props) => {
     })}
     
   </table>
-
+   
+  {showModal && dataToShow !== null && 
+  <EmployeeModal onClose={onCloseModal} data={dataToShow}/>}
 
 
         </div>
