@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./HomeStyle.css";
 import { IEmployee, PageEnum, dummyData } from "./Employee";
 import EmployeeList from "./EmployeeList";
 import AddEmployee from "./AddEmployee";
+import EditEmployee from "./EditEmployee";
 
 
 const Home=()=>{ 
@@ -13,6 +14,17 @@ const Home=()=>{
         );
 
     const [showemployee,setShowemployee]=useState(PageEnum.list);
+    
+    const [dataToEdit,setDataToEdit]=useState({} as IEmployee);
+
+    useEffect(() => {
+        const listInString = window.localStorage.getItem("EmployeeList");
+        if (listInString) {
+          _setEmployeeList(JSON.parse(listInString));
+        }
+      }, []);
+
+
 
     const onAddEmployeeClickHnd=()=>{
         setShowemployee(PageEnum.add);
@@ -23,9 +35,14 @@ const Home=()=>{
         setShowemployee(PageEnum.list);
     };
 
+    const _setEmployeeList = (list: IEmployee[]) => {
+        setEmployeeList(list);
+        window.localStorage.setItem("EmployeeList", JSON.stringify(list));
+      };
+
     const addEmployee=(data: IEmployee)=>{
         setEmployeeList([...employeeList,data]);
-        setShowemployee(PageEnum.list);
+       
     };
 
     const deleteEmployee=(data: IEmployee)=>{
@@ -35,8 +52,22 @@ const Home=()=>{
 
         temList.splice(indexToDelete,1);
 
-        setEmployeeList(temList);
+        _setEmployeeList(temList);
     };
+
+    const editEmployeeData=(data: IEmployee)=>{
+        setShowemployee(PageEnum.edit);
+        setDataToEdit(data);
+
+    };
+
+    const updateData = (data: IEmployee) => {
+    const filteredData = employeeList.filter((x) => x.id === data.id)[0];
+    const indexOfRecord = employeeList.indexOf(filteredData);
+    const tempData = [...employeeList];
+    tempData[indexOfRecord] = data;
+    _setEmployeeList(tempData);
+  };
 
     return(
         <>
@@ -52,11 +83,16 @@ const Home=()=>{
                 {showemployee===PageEnum.list && (
                 <>
                     <button className="Add-emp" onClick={onAddEmployeeClickHnd}>Add Employee</button>
-                    <EmployeeList list={employeeList} onDelete={deleteEmployee}/>
+                    <EmployeeList list={employeeList} onDelete={deleteEmployee} onEdit={editEmployeeData}/>
                 </> 
 )}
-                {showemployee===PageEnum.add && <AddEmployee onBack={showListPage} onsubmitClickHnd={addEmployee}/> }
+                {showemployee===PageEnum.add && <AddEmployee onBack={showListPage} 
+                onsubmitClickHnd={addEmployee}/> }
 
+                {showemployee === PageEnum.edit && <EditEmployee data={dataToEdit} 
+                onBack={showListPage} onUpdateClickHnd={updateData}/>}
+
+        
             </section>
         </>
     );

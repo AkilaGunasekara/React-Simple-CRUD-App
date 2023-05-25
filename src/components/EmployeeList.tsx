@@ -9,11 +9,12 @@ import EmployeeModal from "./EmployeeModal";
 type Props = {
     list: IEmployee[]
     onDelete: (data: IEmployee) => void;
+    onEdit: (data: IEmployee) => void;
 }
 
 const EmployeeList = (props : Props) => {
 
-    const {list,onDelete} = props;
+    const {list,onDelete,onEdit} = props;
 
     const onDeleteClickHnd = (data: IEmployee) => {
         onDelete(data);
@@ -56,7 +57,7 @@ const EmployeeList = (props : Props) => {
                 <td>{employee.mobile}</td>
                 <td>
                     <button onClick={() => onView(employee)}>View</button>
-                    <button>Edit</button>   
+                    <button onClick={() => onEdit(employee)}>Edit</button>   
                     <button onClick={() => onDelete(employee)}>Delete</button>
                 </td>
             </tr>
