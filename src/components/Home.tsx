@@ -28,6 +28,16 @@ const Home=()=>{
         setShowemployee(PageEnum.list);
     };
 
+    const deleteEmployee=(data: IEmployee)=>{
+
+        const indexToDelete=employeeList.indexOf(data);
+        const temList=[...employeeList];
+
+        temList.splice(indexToDelete,1);
+
+        setEmployeeList(temList);
+    };
+
     return(
         <>
             <article className="article-header">
@@ -42,7 +52,7 @@ const Home=()=>{
                 {showemployee===PageEnum.list && (
                 <>
                     <button className="Add-emp" onClick={onAddEmployeeClickHnd}>Add Employee</button>
-                    <EmployeeList list={employeeList}/>
+                    <EmployeeList list={employeeList} onDelete={deleteEmployee}/>
                 </> 
 )}
                 {showemployee===PageEnum.add && <AddEmployee onBack={showListPage} onsubmitClickHnd={addEmployee}/> }

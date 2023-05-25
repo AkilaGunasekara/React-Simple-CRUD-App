@@ -5,11 +5,16 @@ import { IEmployee } from "./Employee";
 
 type Props = {
     list: IEmployee[]
+    onDelete: (data: IEmployee) => void;
 }
 
 const EmployeeList = (props : Props) => {
 
-    const {list} = props;
+    const {list,onDelete} = props;
+
+    const onDeleteClickHnd = (data: IEmployee) => {
+        onDelete(data);
+    };
 
 
     return (
@@ -35,7 +40,7 @@ const EmployeeList = (props : Props) => {
                 <td>
                     <button>View</button>
                     <button>Edit</button>   
-                    <button>Delete</button>
+                    <button onClick={() => onDelete(employee)}>Delete</button>
                 </td>
             </tr>
         );
