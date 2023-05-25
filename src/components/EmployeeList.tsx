@@ -14,7 +14,7 @@ const EmployeeList = (props : Props) => {
 
     return (
         <div>
-            This is employee list page.
+            <h3>Employee List</h3>
 
             <table>
     <tr>

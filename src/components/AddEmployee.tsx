@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./EmployeeFormStyle.css"
 import { IEmployee } from "./Employee";
+import { on } from "events";
 
 type props={
     onBack:()=>void;
@@ -33,6 +34,7 @@ const AddEmployee = (props: props) => {
             setMobile(e.target.value);
         };
         const onsubmitClickHnd=(e: any)=>{
+            e.preventDefault();
             const data: IEmployee={
 
                 id:new Date().toJSON().toString(),
@@ -43,6 +45,7 @@ const AddEmployee = (props: props) => {
                 mobile:mobile
             };
             props.onsubmitClickHnd(data);
+            onBack();
 
         }
 

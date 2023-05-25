@@ -36,10 +36,12 @@ const Home=()=>{
                 </header>
             </article>
 
+            
+
             <section className="section-content">
                 {showemployee===PageEnum.list && (
                 <>
-                    <button onClick={onAddEmployeeClickHnd}>Add Employee</button>
+                    <button className="Add-emp" onClick={onAddEmployeeClickHnd}>Add Employee</button>
                     <EmployeeList list={employeeList}/>
                 </> 
 )}
