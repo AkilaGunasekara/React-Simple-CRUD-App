@@ -80,6 +80,7 @@ const AddEmployee = (props: props) => {
             <input type="text" name="mobile" value={mobile} onChange={onmobilechangeHnd}/>
             </div>
             <div>
+                
                 <button type="submit">Add Interns</button>
                 <button onClick={onBack} type="button">Back</button>
             </div>
