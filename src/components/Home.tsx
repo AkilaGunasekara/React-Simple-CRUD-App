@@ -4,9 +4,14 @@ import { IEmployee, PageEnum, dummyData } from "./Employee";
 import EmployeeList from "./EmployeeList";
 import AddEmployee from "./AddEmployee";
 import EditEmployee from "./EditEmployee";
+import SendIcon from '@mui/icons-material/Send';
+import { Avatar, Box, Button, Container, IconButton, Stack, ThemeProvider, Toolbar, Tooltip, Typography, createTheme } from "@mui/material";
+import { AspectRatio } from "@mui/icons-material";
 
 
 const Home=()=>{ 
+
+    
     
     const[employeeList,setEmployeeList]= useState(
         dummyData as IEmployee[]
@@ -69,20 +74,62 @@ const Home=()=>{
     _setEmployeeList(tempData);
   };
 
+  const theme = createTheme({
+   
+  });
+  
+
     return(
-        <>
+        <Container sx={{}}>
             <article className="article-header">
                 <header>
-                    <h1>React Simple CRUD Application</h1>
+                <ThemeProvider theme={theme}>
+                    <Typography 
+                    sx={{
+                        mr: 2,
+                        display: { xs: 'flex', md: 'flex' },
+                        flexGrow: 1,
+                        fontFamily: 'monospace',
+                        my: { xs: 1, md: 1.5 },
+                        fontWeight: 700,
+                        letterSpacing: '.2rem',
+                        color: 'black',
+                        textDecoration: 'none',
+                        textTransform: 'uppercase',
+                        fontSize: '2.5rem',
+                        justifyContent: 'center',
+                      }}
+                    >Interns Information List</Typography>
+                </ThemeProvider>
                 </header>
             </article>
 
             
 
-            <section className="section-content">
+            <section>
+
                 {showemployee===PageEnum.list && (
                 <>
-                    <button className="Add-emp" onClick={onAddEmployeeClickHnd}>Add Employee</button>
+                    <Stack
+                    direction={{ xs: 'column', sm: 'row' }}
+                    spacing={{ xs: 1, sm: 2, md: 4 }}
+                    justifyContent="space-between"
+                    marginBottom={2}
+                    >
+                    
+                        {/* <Avatar  src="qlogo.png" /> */}
+                        
+                 
+                    
+                    <h3>Interns List</h3>
+
+                        <Button variant="outlined" size="small" onClick={onAddEmployeeClickHnd} endIcon={<SendIcon />}>
+                        Add Interns
+                        </Button>
+                    </Stack>
+
+                        
+                    
                     <EmployeeList list={employeeList} onDelete={deleteEmployee} onEdit={editEmployeeData}/>
                 </> 
 )}
@@ -94,8 +141,8 @@ const Home=()=>{
 
         
             </section>
-        </>
+            </Container>
     );
-
+   
 }
 export default Home;

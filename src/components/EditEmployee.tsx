@@ -50,7 +50,7 @@ const EditEmployee = (props: Props) => {
   return (
     <div className="form-container">
       <div>
-        <h2>Add Employee Form</h2>
+        <h2>Add Interns Form</h2>
       </div>
 
       <div>
@@ -101,7 +101,7 @@ const EditEmployee = (props: Props) => {
             />
           </div>
           <div>
-            <button type="submit">Update Employee</button>
+            <button type="submit">Update Interns</button>
             <button onClick={onBack} type="button">
               Back
             </button>

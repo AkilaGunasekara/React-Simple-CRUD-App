@@ -54,7 +54,7 @@ const AddEmployee = (props: props) => {
     return (
         <div className="form-container">
     <div>
-        <h2>Add Employee Form</h2>
+        <h2>Add Interns Form</h2>
     </div>
 
     <div>
@@ -80,7 +80,8 @@ const AddEmployee = (props: props) => {
             <input type="text" name="mobile" value={mobile} onChange={onmobilechangeHnd}/>
             </div>
             <div>
-                <button type="submit">Add Employee</button>
+                
+                <button type="submit">Add Interns</button>
                 <button onClick={onBack} type="button">Back</button>
             </div>
         </form>
