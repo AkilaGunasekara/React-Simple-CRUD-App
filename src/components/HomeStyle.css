@@ -1,19 +1,33 @@
+/* body{
+    margin: 0;
+    padding: 0;
+    
+    font-family: "Lucida Console", "Courier New", monospace;
+      
+
+    background-color: #ffe7eb;
+
+}
+
 .article-header{
     margin: 10px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #76cfeb;
+    background-color: #ff7b7b;
     box-shadow: 0 0 10px #ccc;
     transition: all 0.3s ease-in-out;
     align-items: center;
     text-align: center;
+    font-family: "Lucida Console", "Courier New", monospace;
+    
 }
 
 .article-header:hover{
     background-color: #fff;
     box-shadow: 0 0 10px #ccc;
     transition: all 0.3s ease-in-out;
+    color: #920013;
 }
 
 .article-header h1{
@@ -36,15 +50,17 @@
     float: right;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #025169;
+    background-color: #630b0b;
     box-shadow: 0 0 10px #ccc;
     transition: all 0.3s ease-in-out;
     align-items: center;
     text-align: center;
+    font-family: "Lucida Console", "Courier New", monospace;
+    
 }
 .Add-emp:hover{
-    background-color: #097ba8;
+    background-color: #b90047;
     box-shadow: 0 0 10px #ccc;
     transition: all 0.3s ease-in-out;
     color: #ecf1f3;
-}
+} */

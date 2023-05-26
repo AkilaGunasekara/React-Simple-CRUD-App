@@ -4,9 +4,12 @@ import { IEmployee, PageEnum, dummyData } from "./Employee";
 import EmployeeList from "./EmployeeList";
 import AddEmployee from "./AddEmployee";
 import EditEmployee from "./EditEmployee";
+import { Container, ThemeProvider, Typography, createTheme } from "@mui/material";
 
 
 const Home=()=>{ 
+
+    
     
     const[employeeList,setEmployeeList]= useState(
         dummyData as IEmployee[]
@@ -69,11 +72,29 @@ const Home=()=>{
     _setEmployeeList(tempData);
   };
 
+  const theme = createTheme({
+    typography: {
+      subtitle1: {
+        fontSize: 12,
+        
+      },
+      body1: {
+        fontWeight: 500,
+      },
+      button: {
+        fontStyle: 'italic',
+      },
+    },
+  });
+  
+
     return(
-        <>
+        <Container sx={{}}>
             <article className="article-header">
                 <header>
-                    <h1>React Simple CRUD Application</h1>
+                <ThemeProvider theme={theme}>
+                    <Typography variant="h4" >Interns Information List</Typography>
+                </ThemeProvider>
                 </header>
             </article>
 
@@ -82,7 +103,7 @@ const Home=()=>{
             <section className="section-content">
                 {showemployee===PageEnum.list && (
                 <>
-                    <button className="Add-emp" onClick={onAddEmployeeClickHnd}>Add Employee</button>
+                    <button className="Add-emp" onClick={onAddEmployeeClickHnd}>Add Interns</button>
                     <EmployeeList list={employeeList} onDelete={deleteEmployee} onEdit={editEmployeeData}/>
                 </> 
 )}
@@ -94,8 +115,8 @@ const Home=()=>{
 
         
             </section>
-        </>
+            </Container>
     );
-
+   
 }
 export default Home;
